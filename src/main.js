@@ -6,7 +6,7 @@ import router from './router'
 
 import store from './model/index.js';
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({

@@ -3,15 +3,22 @@
     <h1>{{count}}</h1>
     <h1>{{student}}</h1>
     <button @click="handleClickMutation">Mutation</button>
-
     <button @click="handleClickAction">Action</button>
+    <hr />
+
+    <Child title="测试标题" @get-data="showData"/>
   </div>
 </template>
 
 <script>
+import Child from "./Child";
 import { mapState, mapMutations, mapActions } from "vuex";
 
 export default {
+  name: 'Home',
+  components: {
+    Child
+  },
   computed: {
     ...mapState("HomeModules", {
       count: state => state.count,
@@ -23,8 +30,8 @@ export default {
     ...mapMutations("HomeModules", {
       changeStudent: "changeStudent"
     }),
-    ...mapActions('HomeModules',{
-      asyncChangeCount: 'asyncChangeCount'
+    ...mapActions("HomeModules", {
+      asyncChangeCount: "asyncChangeCount"
     }),
 
     handleClickMutation() {
@@ -40,10 +47,16 @@ export default {
       // })
 
       // Promise接收第二种
-      Promise.all([this.asyncChangeCount()]).then((res) => {
-        console.log(res)   // ["执行结束"]
-      })
+      Promise.all([this.asyncChangeCount()]).then(res => {
+        console.log(res); // ["执行结束"]
+      });
+    },
+
+
+
+    showData(v) {
+      alert(`儿子传来的值${v}`)
     }
-  }
+  },
 };
 </script>
