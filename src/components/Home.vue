@@ -7,17 +7,25 @@
     <hr />
 
     <Child title="测试标题" @get-data="showData"/>
+    <hr>
+
+    <play-video src="https://www.w3school.com.cn/i/movie.ogg"/>
+
   </div>
 </template>
 
 <script>
 import Child from "./Child";
+// 引入视频组件
+import PlayVideo from './Video/index';
+
 import { mapState, mapMutations, mapActions } from "vuex";
 
 export default {
   name: 'Home',
   components: {
-    Child
+    Child,
+    PlayVideo
   },
   computed: {
     ...mapState("HomeModules", {

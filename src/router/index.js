@@ -5,7 +5,8 @@ import HomeDetail from '@/components/HomeDetail'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
+  // mode: 'history',
   routes: [
     {
       path: '/',
@@ -19,3 +20,11 @@ export default new Router({
     }
   ]
 })
+
+router.beforeEach((to,from,next) => {
+  console.log(to)
+  console.log(from)
+  next()
+})
+
+export default router

@@ -39,6 +39,7 @@ export default {
 #app {
   width: 100%;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 .slide-fade-enter-active {
   transition: all 0.3s ease;

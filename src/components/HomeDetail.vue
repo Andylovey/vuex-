@@ -11,7 +11,15 @@ export default {
         return {
 
         }
-    }
+    },
+    // beforeRouteEnter (to, from, next) {
+    //     console.log(to,from)
+    //     next()
+    // },
+    // beforeRouteLeave (to, from, next) {
+    //     console.log(to,from)
+    //     next()
+    // }
 }
 </script>
 
