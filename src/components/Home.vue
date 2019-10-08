@@ -6,23 +6,33 @@
     <button @click="handleClickAction">Action</button>
     <hr />
 
-    <Child title="测试标题" @get-data="showData"/>
-    <hr>
+    <Child title="测试标题" @get-data="showData" />
+    <hr />
 
-    <play-video src="https://www.w3school.com.cn/i/movie.ogg"/>
+    <!-- <play-video src="https://www.w3school.com.cn/i/movie.ogg"/> -->
 
+    <div>
+      <textarea cols="30" rows="10" @input="handleInput" v-model="inputVal"></textarea>
+      <div>{{inputNum}}/200</div>
+    </div>
   </div>
 </template>
 
 <script>
 import Child from "./Child";
 // 引入视频组件
-import PlayVideo from './Video/index';
+import PlayVideo from "./Video/index";
 
 import { mapState, mapMutations, mapActions } from "vuex";
 
 export default {
-  name: 'Home',
+  name: "Home",
+  data() {
+    return {
+      inputVal: "",
+      inputNum: 0
+    };
+  },
   components: {
     Child,
     PlayVideo
@@ -60,11 +70,23 @@ export default {
       });
     },
 
-
-
     showData(v) {
-      alert(`儿子传来的值${v}`)
+      alert(`儿子传来的值${v}`);
+    },
+
+    handleInput(e) {
+      if(e.target.value.length > 200) {
+        return;
+      }
+      this.inputNum = e.target.value.length;
     }
   },
+  watch: {
+    inputVal() {
+      if (this.inputVal.length > 200) {
+        this.inputVal = this.inputVal.slice(0, 200);
+      }
+    }
+  }
 };
 </script>
